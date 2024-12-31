@@ -37,6 +37,9 @@ class ThreadSafetyTests {
         }
     }
 
+    // This test usually fails with one of these two exceptions:
+    // 1. java.util.NoSuchElementException: ArrayDeque is empty.
+    // 2. java.lang.ArrayIndexOutOfBoundsException: arraycopy: ...
     @Test
     fun `safe to use schema from simultaneous coroutines`(): Unit = runBlocking(Dispatchers.Default) {
         repeat(100) {
